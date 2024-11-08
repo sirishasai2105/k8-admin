@@ -1,0 +1,20 @@
+#need to do some configuration
+apiVersion: v1
+data:
+  mapRoles: |
+    - groups:
+      - system:bootstrappers
+      - system:nodes
+      rolearn: arn:aws:iam::311141538313:role/eksctl-expense-1-nodegroup-expense-NodeInstanceRole-GPaY2OgVNRTP
+      username: system:node:{{EC2PrivateDNSName}}
+  mapUsers: |
+    - groups:
+      - expense-trainee
+      userarn: arn:aws:iam::311141538313:user/suresh
+      username: suresh
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2024-11-06T02:05:11Z"
+  name: aws-auth
+  namespace: kube-system
+  uid: 7c41c4b2-f380-4fe0-91b7-6035fd37f2dc
