@@ -20,9 +20,9 @@ metadata:
   namespace: expense
 subjects:
 # You can specify more than one "subject"
-- kind: User
+- apiGroup: rbac.authorization.k8s.io 
   name: suresh # "name" is case sensitive
-  apiGroup: rbac.authorization.k8s.io
+  kind: User
 roleRef:
   # "roleRef" specifies the binding to a Role / ClusterRole
   kind: Role #this must be Role or ClusterRole
