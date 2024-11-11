@@ -40,7 +40,24 @@ rules:
   resources: ["*"]
   verbs: ["*"]
 ---
-
+#role binding
+apiVersion: rbac.authorization.k8s.io/v1
+# This role binding allows "jane" to read pods in the "expense" namespace.
+# You need to already have a Role named "expense" in that namespace.
+kind: RoleBinding
+metadata:
+  name: expense-lead
+  namespace: expense
+subjects:
+# You can specify more than one "subject"
+- apiGroup: rbac.authorization.k8s.io 
+  name: ramesh # "name" is case sensitive
+  kind: User
+roleRef:
+  # "roleRef" specifies the binding to a Role / ClusterRole
+  kind: Role #this must be Role or ClusterRole
+  name: expense-lead # this must match the name of the Role or ClusterRole you wish to bind to
+  apiGroup: rbac.authorization.k8s.io
 
 
 
